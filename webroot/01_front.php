@@ -123,14 +123,15 @@ foreach ($categories AS $cat) {
 												));
 		$alternating = !$alternating;
 
-
 		$slow->parse("Item");
 		if (trim($product->getDescription()) != "") {
 			$slow->parse("Item_description");
 		}
 	}
 
-	$slow->parse("Category");
+	if (count($products) > 0) {
+		$slow->parse("Category");
+	}
 }
 
 

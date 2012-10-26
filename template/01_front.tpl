@@ -6,7 +6,6 @@
 		<meta name="ROBOTS" content="NOODP" />
 		<meta name="description" content="{META_DESCRIPTION}" />
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<link rel="stylesheet" type="text/css" href="/1css/public-default.css" media="screen" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<link rel="stylesheet" type="text/css" href="{CSS_FILE}" media="handheld, screen" />
@@ -121,6 +120,5 @@
     <div id="footercontainer">
     	<span class="copyright">Dreamcakes.co.ke</span>
     </div>
-		{GOOGLE_ADWORD}
 	</body>
 </html>
