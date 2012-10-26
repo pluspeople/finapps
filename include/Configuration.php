@@ -1,6 +1,8 @@
 <?php
 
-ini_set("include_path", "/home/a1646/public_html/include:./");
+#ini_set("include_path", "/home/a1646/public_html/include:./");
+ini_set("include_path", "/Users/kaal/work/2012/finapps/include:./");
+
 $singletonArray = array();
 
 class Configuration {

@@ -106,6 +106,39 @@ class ProductCategory {
     }
   }
 
+	static public function createNew($solutionId) {
+		$solutionId = (int)$solutionId;
+
+		if ($solutionId > 0) {
+      $db = Database::instantiate(Database::TYPE_WRITE);
+			
+			$query = "SELECT	 max(orderno) as nextid
+			          FROM	   product_category";
+
+			if ($result = $db->query($query) AND $foo = $db->fetchObject($result)) {
+				$nextId = $foo->nextid + 1;
+
+				$query = "INSERT INTO   product_category(
+                                solution_id, 
+                                name, 
+                                orderno,
+                                description)
+                VALUES(
+                              '$solutionId',
+                              '',
+                              '$nextId',
+                              '');";
+
+				if ($db->query($query)) {
+					$obj = new ProductCategory($db->insertId());
+					$obj->getSolutionId(); // dummy init
+					return $obj;
+				}
+			}
+		}
+		return null;
+	}
+
   public function update() {
     if ($this->getId() > 0) {
 			$db = Database::instantiate(Database::TYPE_WRITE);
@@ -129,7 +162,8 @@ class ProductCategory {
 		
       $query="SELECT  solution_id, 
                      name, 
-                     orderno 
+                     orderno,
+                     description
                FROM  product_category 
                WHERE id='" . $this->getId() . "';";
 

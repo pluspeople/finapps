@@ -24,15 +24,21 @@
 			<div class="contentwrapper">
 				<!-- BEGIN DYNAMIC BLOCK: Category --> 
 				<br/>
-				<h2 class="category">{CATEGORY_NAME}</h2>
+				<form method="post" action="19_editcategory.php?id={CATEGORY_ID}">
+					<h1>
+						<span>{CATEGORY_NAME}</span>
+						&nbsp; <input class="edit" type="submit" name="add" value="" style="margin:0px;" title="Edit the name and description of this category"/>
+					</h1>
+				</form>
+
 				<table width="100%" cellspacing="0">
 					<tr>
 						<td colspan="2">{CATEGORY_DESCRIPTION}</td>
 					</tr>
-					<tr class="{ITEM_DARK}" style="padding:0px;">
+					<tr>
 						<td colspan="2"> 
 							<form method="post" action="18_editproduct.php?new={CATEGORY_ID}">
-							<input type="submit" name="add" value="Add new product" style="margin:0px;"/>
+							<input type="submit" name="add" value="Add new product to {CATEGORY_NAME}" style="margin:0px;"/>
 							</form>
 						</td>
 					</tr>
@@ -42,7 +48,7 @@
 						<td align="right" width="145" style="padding:0px;padding-right:2px;padding-top:5px;">
 							<form method="post" action="18_editproduct.php?id={ITEM_ID}">
 								{ITEM_PRICE}
-							<input type="submit" name="buy" value="edit" style="max-width:40px;margin:0px;"/>
+							&nbsp; <input type="submit" name="edit" class="edit" value="" style="max-width:40px;margin:0px;"/>
 							</form>
 							</td>
 					</tr>
@@ -52,10 +58,13 @@
 					</tr>
 					<!-- END DYNAMIC BLOCK: Item_description -->
 					<!-- END DYNAMIC BLOCK: Item -->
-
 				</table>
 				<br/>
 				<!-- END DYNAMIC BLOCK: Category --> 
+				<form method="post" action="19_editcategory.php?new=true">
+					<input type="submit" name="add" value="Add new category" style="margin:0px;"/>
+				</form>
+
 			</div>
     </div>
 

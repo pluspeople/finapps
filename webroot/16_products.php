@@ -46,9 +46,7 @@ foreach ($categories AS $cat) {
 		}
 	}
 
-	if (count($products) > 0) {
-		$slow->parse("Category");
-	}
+	$slow->parse("Category");
 }
 
 
