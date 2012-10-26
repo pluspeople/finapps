@@ -6,7 +6,11 @@ $slow->setTemplateFile('css.tpl');
 
 header('Content-type: text/css'); 
 
-$solution = SolutionFactory::factoryByDomain($_SERVER["SERVER_NAME"]);
+if (isset($_GET["id"])) {
+	$solution = SolutionFactory::factoryOne($_GET["id"]);
+} else {
+	$solution = SolutionFactory::factoryByDomain($_SERVER["SERVER_NAME"]);
+}
 
 $slow->assign(array("MAIN_COLOR" => $solution->getMainColor(),
 										"SEC_COLOR" => $solution->getSecondaryColor()));

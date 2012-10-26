@@ -57,7 +57,7 @@
 
 				<form method="post" action="" name="OF">
 					<h2>Full Name:</h2>
-					<input type="text" name="name" value="{NAME_VALUE}"/ style="width:96%;margin-bottom:5px;"><br/>
+					<input type="text" name="name" value="{NAME_VALUE}"/ style="width:96%;margin-bottom:5px;"/><br/>
 					<h2>Phone:</h2>
 					<input type="text" name="phone" value="{PHONE_VALUE}" style="width:96%;margin-bottom:5px;"/><br/>
 					<h2>Email:</h2>

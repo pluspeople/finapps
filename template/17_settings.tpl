@@ -8,7 +8,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<link rel="stylesheet" type="text/css" href="/1css/my.css" media="handheld, screen" />
+		<link rel="stylesheet" type="text/css" href="{CSS_FILE}" media="handheld, screen" />
 	</head>
 	<body> 
 		<!--   Produced by Dreamcakes.co.ke © 2012    -->
@@ -36,6 +36,8 @@
 
 				<br/>
 				<input class="button" type="submit" value="Save settings" name="OK" /><br/>
+				<br/>
+				<input class="button" type="button" value="Back" name="cancel" onclick="document.location='16_products.php'"/><br/>
 			</form>
 			</div>
     </div>

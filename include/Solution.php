@@ -117,6 +117,34 @@ class Solution {
     }
   }
 
+	static public function createNew($domain) {
+		if ($domain != "") {
+      $db = Database::instantiate(Database::TYPE_WRITE);
+			
+			$query = "INSERT INTO   solution(
+                              name, 
+                              domain, 
+                              logo, 
+                              logo_type, 
+                              main_color, 
+                              secondary_color)
+                VALUES(
+                              '',
+                              '" . $db->dbIn($domain) . "',
+                              '',
+                              '',
+                              '',
+                              '');";
+
+			if ($db->query($query)) {
+				$obj = new Solution($db->insertId());
+				$obj->getDomain(); // dummy init
+				return $obj;
+			}
+		}
+		return null;
+	}
+
   public function update() {
     if ($this->getId() > 0) {
 			$db = Database::instantiate(Database::TYPE_WRITE);

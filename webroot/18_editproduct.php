@@ -90,6 +90,9 @@ $slow->assign(array("NAME" => $product->getName(),
 										));
 
 
+$slow->assign(array("CSS_FILE" => "css.php?id=" . $solution->getId()));
+
+
 $slow->parse();
 $slow->slowPrint();
 

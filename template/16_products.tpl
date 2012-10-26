@@ -8,7 +8,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<link rel="stylesheet" type="text/css" href="/1css/my.css" media="handheld, screen" />
+		<link rel="stylesheet" type="text/css" href="{CSS_FILE}" media="handheld, screen" />
 	</head>
 	<body> 
 		<!--   Produced by Dreamcakes.co.ke © 2012    -->
@@ -65,6 +65,10 @@
 				<form method="post" action="19_editcategory.php?new=true">
 					<input type="submit" name="add" value="Add new category" style="margin:0px;"/>
 				</form>
+
+				<br/>
+				<br/>
+				<input class="button" type="button" value="Back" name="cancel" onclick="document.location='11_dashboard.php'"/><br/>
 
 			</div>
     </div>

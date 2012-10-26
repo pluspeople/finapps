@@ -48,10 +48,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$slow->assign(array("WAITING_ORDERS" => 42));
-$slow->parse("Open_orders");
+$waiting = OrderFactory::factoryByStep($solution->getId(), Order::AWAITING_BUSINESS);
+$amount = count($waiting);
+print "kaal" . $amount;
+if ($amount > 0) {
+	$slow->assign(array("WAITING_ORDERS" => $amount));
+	$slow->parse("Open_orders");
+}
 
-
+$slow->assign(array("CSS_FILE" => "css.php?id=" . $solution->getId()));
 
 
 $slow->parse();

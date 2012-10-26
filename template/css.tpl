@@ -15,6 +15,9 @@ h2{font-size:1.2em;margin:0;padding:0;font-weight:bold;}
 .error{color:#F00;padding:5px 0 5px 0;font-size:1.1em;font-weight:bold;}
 .clearfloat{clear:both;}
 
+.trash {background-image:url('/1image/trash.png');width:14px;height:20px;padding:0px;border:0px;}
+.edit {background-image:url('/1image/edit.png');width:16px;height:20px;padding:0px;border:0px;}
+
 /***** CONTAINERS *****/
 #headercontainer{height:70px;}
 .logocontainer{width:310px;padding:0 5px 0 5px;margin:0 auto;}
@@ -22,7 +25,7 @@ h2{font-size:1.2em;margin:0;padding:0;font-weight:bold;}
 #searchcontainer{height:53px;padding-top:6px;background-color:#C6C6C6;}
 #backcontainer{height:33px;padding-top:7px;background-color:#EBEBEB;}
 #maincontainer{background-color:#fff;}
-.contentwrapper{min-width:310px;max-width:600px;padding:10px 5px 10px 5px;margin:0 auto;}
+.contentwrapper{min-width:310px;max-width:500px;padding:10px 5px 10px 5px;margin:0 auto;}
 #footercontainer{padding:10px 5px 10px 5px;font-size:1.1em;text-align:center;}
 #footercontainer a{font-weight:bold;text-decoration:none;}
 #footercontainer .copyright{font-weight:bold;}

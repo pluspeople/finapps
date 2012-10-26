@@ -12,12 +12,22 @@
  PLUSPeople at the following e-mail address: info@pluspeople.dk
 */
 
-require_once("Configuration.php");
+require_once("../include/Configuration.php");
 
 class OrderFactory {
   ############### Properties ####################
   const SELECTLIST = "
- ";
+SELECT id,
+process_step_id,
+created_date,
+total_price,
+solution_id,
+name,
+phone,
+email,
+address,
+tag,
+history ";
 
   # # # # # # # # misc methods # # # # # # # #
 
@@ -26,7 +36,7 @@ class OrderFactory {
     $id = (int)$id;
 
 	  $query = OrderFactory::SELECTLIST . "
-							FROM  order
+							FROM  orders
 							WHERE	id = '$id' ";
 		
 		if ($result = $db->query($query) AND $foo = $db->fetchObject($result)) {
@@ -40,7 +50,7 @@ class OrderFactory {
     $db = Database::instantiate(Database::TYPE_READ);
 
 	  $query = OrderFactory::SELECTLIST . "
-							FROM  order ";
+							FROM  orders ";
 		
 		$tempArray = array();
 		if ($result = $db->query($query)) {
@@ -48,6 +58,29 @@ class OrderFactory {
 				$tempArray[] = new Order($foo->id, $foo);
 			}
 			$db->freeResult($result);
+		}
+		return $tempArray;
+  }
+
+  static function factoryByStep($solutionId, $step) {
+    $db = Database::instantiate(Database::TYPE_READ);
+		$solutionId = (int)$solutionId;
+		$step = (int)$step;
+		$tempArray = array();
+
+		if ($solutionId > 0 AND $step > 0) {
+			$query = OrderFactory::SELECTLIST . "
+							 FROM  orders
+               WHERE solution_id='$solutionId'
+               AND   process_step_id='$step' ";
+		
+			print $query;
+			if ($result = $db->query($query)) {
+				while($foo = $db->fetchObject($result)) {
+					$tempArray[] = new Order($foo->id, $foo);
+				}
+				$db->freeResult($result);
+			}
 		}
 		return $tempArray;
   }

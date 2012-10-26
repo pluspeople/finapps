@@ -36,20 +36,22 @@ foreach ($categories AS $cat) {
 	foreach($products AS $product) {
 		$slow->assign(array("ITEM_ID" => $product->getId(),
 												"ITEM_NAME" => $product->getName(),
-												"ITEM_PRICE" => $product->getFormatedTotalPrice()
+												"ITEM_PRICE" => $product->getFormatedTotalPrice(),
+												"ITEM_DESCRIPTION" => nl2br($product->getDescription())
 												));
 		$alternating = !$alternating;
 
-		$slow->parse("Item");
 		if (trim($product->getDescription()) != "") {
 			$slow->parse("Item_description");
 		}
+		$slow->parse("Item");
 	}
 
 	$slow->parse("Category");
 }
 
 
+$slow->assign(array("CSS_FILE" => "css.php?id=" . $solution->getId()));
 
 
 $slow->parse();

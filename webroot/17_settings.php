@@ -39,10 +39,8 @@ $slow->assign(array("NAME" => $solution->getName(),
 
 
 
-$slow->assign(array("WAITING_ORDERS" => 42));
-$slow->parse("Open_orders");
 
-
+$slow->assign(array("CSS_FILE" => "css.php?id=" . $solution->getId()));
 
 
 $slow->parse();

@@ -57,6 +57,8 @@ $slow->assign(array("NAME" => $category->getName(),
 										));
 
 
+$slow->assign(array("CSS_FILE" => "css.php?id=" . $solution->getId()));
+
 $slow->parse();
 $slow->slowPrint();
 

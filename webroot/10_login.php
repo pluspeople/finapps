@@ -29,6 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //////////////////////// MAIN DISPLAY
 
+//$slow->assign(array("CSS_FILE" => "css.php?id=" . $solution->getId()));
+$slow->assign(array("CSS_FILE" => "css.php?id=1"));
+
 
 $slow->parse();
 $slow->slowPrint();

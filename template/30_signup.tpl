@@ -10,29 +10,30 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<link rel="stylesheet" type="text/css" href="{CSS_FILE}" media="handheld, screen" />
 	</head>
-	<body> 
+	<body onload="document.loginform.login.focus()";> 
 		<!--   Produced by Dreamcakes.co.ke © 2012    -->
-    <div id="headercontainer">
-    	<div class="logocontainer">
-        <a href="/" class="logo"></a>
-      </div>
-    </div>
 		<div class="poweredBar">
 		</div>
 
     <div id="maincontainer">
 			<div class="contentwrapper">
-			<form action="" method="post">
-				<h2>Category name:</h2>
-				<input type="text" name="name" value="{NAME}"/ style="width:96%;margin-bottom:5px;" /><br/>
-				<h2>Description:</h2>
-				<textarea name="description" style="width:96%;height:50px;">{DESCRIPTION}</textarea>
+				<center>
+					<form action="" method="post">
+						<h2>Business Name:</h2>
+						<input type="text" name="name" value=""/ style="width:96%;margin-bottom:5px;"/><br/>
+						<h2>Wanted domain (before .dreamcakes.co.ke):</h2>
+						<input type="text" name="phone" value="{DEFAULT_DOMAIN}" style="width:96%;margin-bottom:5px;"/><br/>
+						<h2>Email:</h2>
+						<input type="text" name="email" value="" style="width:96%;margin-bottom:5px;"/><br/>
+						<br/>
+						
+						<input class="button" type="submit" value="Sign up" name="OK" /><br/>
+						
+						<br/>
+						<input class="button" type="button" value="Go back" name="back" onclick="document.location='10_login.php';" style="background-color:#CCC;"/>
 
-				<br/>
-				<input class="button" type="submit" value="Save product" name="OK" /><br/>
-				<br/>
-				<input class="button" type="button" value="Back" name="cancel" onclick="document.location='16_products.php'"/><br/>
-			</form>
+					</form>
+				</center>
 			</div>
     </div>
 

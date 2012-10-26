@@ -119,14 +119,15 @@ foreach ($categories AS $cat) {
 		$slow->assign(array("ITEM_ID" => $product->getId(),
 												"ITEM_NAME" => $product->getName(),
 												"ITEM_PRICE" => $product->getFormatedTotalPrice(),
-												"ITEM_DARK" => ($alternating ? "dark" : "")
+												"ITEM_DARK" => ($alternating ? "dark" : ""),
+												"ITEM_DESCRIPTION" => nl2br($product->getDescription())
 												));
 		$alternating = !$alternating;
 
-		$slow->parse("Item");
 		if (trim($product->getDescription()) != "") {
 			$slow->parse("Item_description");
 		}
+		$slow->parse("Item");
 	}
 
 	if (count($products) > 0) {

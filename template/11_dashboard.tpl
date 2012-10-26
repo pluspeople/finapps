@@ -8,7 +8,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<link rel="stylesheet" type="text/css" href="/1css/my.css" media="handheld, screen" />
+		<link rel="stylesheet" type="text/css" href="{CSS_FILE}" media="handheld, screen" />
 	</head>
 	<body> 
 		<!--   Produced by Dreamcakes.co.ke © 2012    -->
@@ -24,10 +24,12 @@
 			<div class="contentwrapper">
 			<form action="" method="post">
 				<!-- BEGIN DYNAMIC BLOCK: Open_orders -->
-				<input class="button" type="submit" value="{WAITING_ORDERS} orders awaiting you" name="openorders" /><br/><br/>
+				<input class="button" type="submit" value="{WAITING_ORDERS} order(s) awaiting you" name="openorders" /><br/><br/>
 				<!-- END DYNAMIC BLOCK: Open_orders -->
-
-				<img src="/1image/chart.png" width="300" height="120"/><br/>
+				<center>
+					<img src="/1image/chart.png" width="300" height="120"/><br/>
+					<br/>
+				</center>
 
 				<input class="button" type="submit" value="Revenue report" name="revenue" /><br/><br/>
 				<input class="button" type="submit" value="Profit report" name="profit" /><br/><br/>
