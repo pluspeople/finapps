@@ -1,9 +1,3 @@
-<br />
-<b>Deprecated</b>:  Function split() is deprecated in <b>/Users/kaal/work/2008/taesk1_6/tools/beanbuilder/beanbuilder.php</b> on line <b>72</b><br />
-<br />
-<b>Warning</b>:  date() [<a href='function.date'>function.date</a>]: It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected 'Europe/Berlin' for 'CEST/2.0/DST' instead in <b>/Users/kaal/work/2008/taesk1_6/tools/beanbuilder/beanbuilder.php</b> on line <b>93</b><br />
-<br />
-<b>Notice</b>:  Undefined variable: body in <b>/Users/kaal/work/2008/taesk1_6/tools/beanbuilder/beanbuilder.php</b> on line <b>179</b><br />
 <?php
 /*
  This legal notice is only available in English.

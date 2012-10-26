@@ -44,6 +44,10 @@ class ProductCategory {
   public function getId() {
     return $this->id;
   }
+
+	public function getSolution() {
+		return SolutionFactory::factoryOne($this->getSolutionId());
+	}
   public function getSolutionId() {
     $this->retriveData();
     return $this->solutionId;

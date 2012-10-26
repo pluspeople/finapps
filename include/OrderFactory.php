@@ -12,7 +12,7 @@
  PLUSPeople at the following e-mail address: info@pluspeople.dk
 */
 
-require_once("../include/Configuration.php");
+require_once("Configuration.php");
 
 class OrderFactory {
   ############### Properties ####################

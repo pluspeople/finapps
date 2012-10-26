@@ -50,6 +50,10 @@ class Product {
   public function getId() {
     return $this->id;
   }
+
+	public function getProductCategory() {
+		return ProductCategoryFactory::factoryOne($this->getProductCategoryId());
+	}
   public function getProductCategoryId() {
     $this->retriveData();
     return $this->productCategoryId;
@@ -151,6 +155,46 @@ class Product {
 	public function getFormatedTotalPrice() {
 		$price = $this->getTotalPrice();
 		return number_format($price/100, 2, '.', ',');
+	}
+
+
+	static public function createNew($categoryId) {
+		$categoryId = (int)$categoryId;
+
+		if ($categoryId > 0) {
+      $db = Database::instantiate(Database::TYPE_WRITE);
+			
+			$query = "SELECT	 max(orderno) as nextid
+			          FROM	   product";
+
+			if ($result = $db->query($query) AND $foo = $db->fetchObject($result)) {
+				$nextId = $foo->nextid + 1;
+
+				$query = "INSERT INTO   product(
+                                product_category_id, 
+                                name, 
+                                description, 
+                                price, 
+                                cost, 
+                                orderno,
+                                vat_rate)
+                VALUES(
+                              '$categoryId',
+                              '',
+                              '',
+                              0,
+                              0,
+                              '$nextId',
+                              '21');";
+
+				if ($db->query($query)) {
+					$obj = new Product($db->insertId());
+					$obj->getProductCategoryId(); // dummy init
+					return $obj;
+				}
+			}
+		}
+		return null;
 	}
 
   protected function retriveData() {

@@ -42,6 +42,10 @@ class User {
   public function getId() {
     return $this->id;
   }
+
+	public function getSolution() {
+		return SolutionFactory::factoryOne($this->getSolutionId());
+	}
   public function getSolutionId() {
     $this->retriveData();
     return $this->solutionId;
@@ -70,7 +74,8 @@ class User {
   }
 
 
-  # # # # # # # # misc methods # # # # # # # #
+	//  # # # # # # # # misc methods # # # # # # # #
+
   public function delete() {
     if ($this->getId() > 0) {
 			$db = Database::instantiate(Database::TYPE_WRITE);

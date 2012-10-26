@@ -54,5 +54,23 @@ password ";
 		}
 		return $tempArray;
   }
+
+  static function factoryByLogin($login, $password) {
+    $db = Database::instantiate(Database::TYPE_READ);
+
+	  $query = UserFactory::SELECTLIST . "
+							FROM  user
+              WHERE login='" . $db->dbIn($login) . "'
+              AND   password='" . $db->dbIn(md5($password)) . "'";
+
+		$tempArray = array();
+		if ($result = $db->query($query)) {
+			while($foo = $db->fetchObject($result)) {
+				$tempArray[] = new User($foo->id, $foo);
+			}
+			$db->freeResult($result);
+		}
+		return $tempArray;
+  }
 }
 ?>
