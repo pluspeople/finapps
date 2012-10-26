@@ -49,8 +49,9 @@
 							<form method="post" action="18_editproduct.php?id={ITEM_ID}">
 								{ITEM_PRICE}
 							&nbsp; <input type="submit" name="edit" class="edit" value="" style="max-width:40px;margin:0px;"/>
+							&nbsp; <input type="submit" name="trash" class="trash" value="" style="max-width:40px;margin:0px;"/>
 							</form>
-							</td>
+						</td>
 					</tr>
 					<!-- BEGIN DYNAMIC BLOCK: Item_description -->
 					<tr class="{ITEM_DARK}" style="padding:0px;">

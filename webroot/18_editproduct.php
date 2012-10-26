@@ -14,6 +14,23 @@ if (!is_object($user)) {
 $solution = $user->getSolution();
 
 // ADD NEW PRODUCT
+if (isset($_POST["trash"])) {
+	$product = ProductFactory::factoryOne($_GET["id"]);
+	if (is_object($product)) {
+		$category = $product->getProductCategory();
+		if (is_object($category)) {
+			$prodSolution = $category->getSolution();
+			if ($prodSolution->getId() == $solution->getId()) {
+				$product->delete();
+				$util->redirect('16_products.php');
+			}
+		}
+	} else {
+		$util->redirect('16_products.php');
+	}
+}
+
+
 if (isset($_GET["new"])) {
 	$category = ProductCategoryFactory::factoryOne($_GET["new"]);
 	if (is_object($category)) {
