@@ -1,10 +1,10 @@
-php_value include_path "/Users/kaal/work/2012/finapps/include:./"
+#php_value include_path "/Users/kaal/work/2012/finapps/include:./"
 
-php_value session.cache_limiter none
-php_value arg_seperator.output "&amp;"
-php_flag register_globals Off
-php_value magic_quotes_gpc On
-php_value upload_max_filesize 8M
+#php_value session.cache_limiter none
+#php_value arg_seperator.output "&amp;"
+#php_flag register_globals Off
+#php_value magic_quotes_gpc On
+#php_value upload_max_filesize 8M
 
 RewriteEngine on
 
@@ -16,6 +16,7 @@ RewriteCond %{REQUEST_URI} !tools/
 RewriteCond %{REQUEST_URI} !public_site/
 RewriteRule ^(.*)$ webroot/$1 [L]
 
+RewriteCond %{REQUEST_URI} !template/
 RewriteCond %{REQUEST_URI} 1image/ [OR]
 RewriteCond %{REQUEST_URI} 1css/ 
 RewriteRule ^(.*)$ template/$1 [L]

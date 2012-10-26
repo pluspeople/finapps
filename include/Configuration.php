@@ -1,4 +1,8 @@
 <?php
+
+ini_set("include_path", "/home/a1646/public_html/include:./");
+$singletonArray = array();
+
 class Configuration {
 	# Template system.
 
@@ -14,11 +18,11 @@ class Configuration {
 		"DatabaseHostRead"						=> "localhost",
 		"DatabaseUserRead"						=> "root",
 		"DatabasePasswordRead"				=> "ture",
-		"DatabaseDatabaseRead"				=> "uhasibu",
+		"DatabaseDatabaseRead"				=> "2012_finapps",
 		"DatabaseHostWrite"						=> "localhost",
 		"DatabaseUserWrite"						=> "root",
 		"DatabasePasswordWrite"				=> "ture",
-		"DatabaseDatabaseWrite"				=> "uhasibu",
+		"DatabaseDatabaseWrite"				=> "2012_finapps",
 
 		"ConvertPath"                 => "/opt/local/bin/convert",
 	);
