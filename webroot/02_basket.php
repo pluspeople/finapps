@@ -67,15 +67,16 @@ foreach ($orderlines AS $orderline) {
 	$slow->assign(array("ITEM_ID" => $orderline[0]->getId(),
 											"ITEM_NAME" => $name,
 											"ITEM_AMOUNT" => $orderline[1],
-											"ITEM_UNITPRICE" => $orderline[0]->getTotalPrice(),
-											"ITEM_TOTAL" => $total));
+											"ITEM_UNITPRICE" => number_format($orderline[0]->getTotalPrice()/100, 2, '.', ','),
+											"ITEM_TOTAL" => number_format($total/100, 2, '.', ',')
+											));
 			
 	$slow->parse("Item");
 }
 
 
 $slow->assign(array("CSS_FILE" => "css.php",
-										"GRAND_TOTAL" => $grandTotal,
+										"GRAND_TOTAL" => number_format($grandTotal/100, 2, '.', ','),
 										"NAME_VALUE" => @$_SESSION["ORDER_NAME"],
 										"PHONE_VALUE" => @$_SESSION["ORDER_PHONE"],
 										"EMAIL_VALUE" => @$_SESSION["ORDER_EMAIL"],
