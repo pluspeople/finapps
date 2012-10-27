@@ -244,7 +244,7 @@ class Solution {
     }
 
     if ($this->logoUpdated) {
-      $query.=" ,logo='$this->logo' ";
+      $query.=" ,logo='" . $db->dbIn($this->logo) . "' ";
       $this->logoUpdated = false;
     }
 

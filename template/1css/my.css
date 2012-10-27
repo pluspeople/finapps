@@ -57,7 +57,6 @@ h2{font-size:1.2em;margin:0;padding:0;font-weight:bold;}
 .feeds li .desc{font-size:1.1em;}
 
 
-/***** RESTAURANTS LISTING *****/
 .listing{list-style:none;margin:0;padding:10px 0 10px 0;}
 .listing li{padding:20px 5px 20px 5px;}
 .listing li .listitem{width:300px;margin:0 auto;}
@@ -66,7 +65,6 @@ h2{font-size:1.2em;margin:0;padding:0;font-weight:bold;}
 .listing li .listingdetails td{padding:0 0 4px 0;vertical-align:top;font-size:1.1em;}
 .listing li .listingdetails .tdicon{width:25px;}
 
-/***** RESTAURANT DETAILS *****/
 .restheading{border-spacing:0;border-collapse:collapse;border:0;width:100%;}
 .restheading td{vertical-align:top;}
 .restheading .tdheading{width:212px;}

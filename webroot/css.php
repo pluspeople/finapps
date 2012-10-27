@@ -13,7 +13,8 @@ if (isset($_GET["id"])) {
 }
 
 $slow->assign(array("MAIN_COLOR" => $solution->getMainColor(),
-										"SEC_COLOR" => $solution->getSecondaryColor()));
+										"SEC_COLOR" => $solution->getSecondaryColor(),
+										"LOGO_URL" => "logo.php?id=" . $solution->getId()));
 
 
 $slow->parse();

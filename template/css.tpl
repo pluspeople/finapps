@@ -57,7 +57,6 @@ h2{font-size:1.2em;margin:0;padding:0;font-weight:bold;}
 .feeds li .desc{font-size:1.1em;}
 
 
-/***** RESTAURANTS LISTING *****/
 .listing{list-style:none;margin:0;padding:10px 0 10px 0;}
 .listing li{padding:20px 5px 20px 5px;}
 .listing li .listitem{width:300px;margin:0 auto;}
@@ -66,7 +65,6 @@ h2{font-size:1.2em;margin:0;padding:0;font-weight:bold;}
 .listing li .listingdetails td{padding:0 0 4px 0;vertical-align:top;font-size:1.1em;}
 .listing li .listingdetails .tdicon{width:25px;}
 
-/***** RESTAURANT DETAILS *****/
 .restheading{border-spacing:0;border-collapse:collapse;border:0;width:100%;}
 .restheading td{vertical-align:top;}
 .restheading .tdheading{width:212px;}
@@ -106,7 +104,7 @@ body{background-color:{MAIN_COLOR};}
 a,a:link,a:active,a:visited{color:{SEC_COLOR};}/* all links */
 #headercontainer{background-color:{MAIN_COLOR};border-bottom:0px solid {SEC_COLOR};}/* container where the logo sits */
 .poweredBar{height: 5px;padding-top:8px;text-align:center;font-weight:bold;font-size:1.1em;color:#FFF;background-color:{SEC_COLOR};}
-.logo{background:url(/logo.php) 0 0 no-repeat;}/* company logo */
+.logo{background:url({LOGO_URL}) 0 0 no-repeat;}/* company logo */
 h1,h2,.feeds li .heading{color:{SEC_COLOR};}/* headings */
 .button{background-color:{SEC_COLOR};}/* submit buttons */
 .backlink,.backbtn{background:url(/1image/eatout/back.png) 0 0 no-repeat;color:{SEC_COLOR};}/* back links */

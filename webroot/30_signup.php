@@ -43,12 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$solution->setName($_POST["name"]);
 			$solution->setDomain($domain);
 			$solution->setEmail($_POST["email"]);
+			// colors
 			$col = $colors[rand(0, count($colors)-1)];
 			$solution->setMainColor($col[0]);
 			$solution->setSecondaryColor($col[1]);
 
+			// default logo
+			$solution->setLogo(file_get_contents('default_logo.png'));
+			$solution->setLogoType('image/png');
+
 			$solution->update();
 
+			// create user
 			$user = User::createNew($solution->getId());
 			$user->setLogin($solution->getEmail());
 			$pw = $util->generatePassword(8);
