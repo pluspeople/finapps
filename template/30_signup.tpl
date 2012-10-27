@@ -22,12 +22,12 @@
 						<h2>Business Name:</h2>
 						<input type="text" name="name" value=""/ style="width:96%;margin-bottom:5px;"/><br/>
 						<h2>Wanted domain (before .dreamcakes.co.ke):</h2>
-						<input type="text" name="phone" value="{DEFAULT_DOMAIN}" style="width:96%;margin-bottom:5px;"/><br/>
+						<input type="text" name="domain" value="{DEFAULT_DOMAIN}" style="width:96%;margin-bottom:5px;"/><br/>
 						<h2>Email:</h2>
 						<input type="text" name="email" value="" style="width:96%;margin-bottom:5px;"/><br/>
 						<br/>
 						
-						<input class="button" type="submit" value="Sign up" name="OK" /><br/>
+						<input class="button" type="submit" value="Sign up" name="sign" /><br/>
 						
 						<br/>
 						<input class="button" type="button" value="Go back" name="back" onclick="document.location='10_login.php';" style="background-color:#CCC;"/>

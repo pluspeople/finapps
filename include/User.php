@@ -89,6 +89,30 @@ class User {
     }
   }
 
+	static public function createNew($solutionId) {
+		$solutionId = (int)$solutionId;
+
+		if ($solutionId > 0) {
+      $db = Database::instantiate(Database::TYPE_WRITE);
+			
+			$query = "INSERT INTO   user(
+                              solution_id, 
+                              login, 
+				                      password)
+                VALUES(
+                              '$solutionId',
+                              '',
+                              '');";
+
+			if ($db->query($query)) {
+				$obj = new User($db->insertId());
+				$obj->getSolutionId(); // dummy init
+				return $obj;
+			}
+		}
+		return null;
+	}
+
   public function update() {
     if ($this->getId() > 0) {
 			$db = Database::instantiate(Database::TYPE_WRITE);

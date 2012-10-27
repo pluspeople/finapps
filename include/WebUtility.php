@@ -269,6 +269,5 @@ class WebUtility {
 		return $isValid;
 	}
 
-
 }
 ?>

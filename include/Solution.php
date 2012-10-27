@@ -25,6 +25,7 @@ class Solution {
   protected $logoType = "";
   protected $mainColor = "";
   protected $secondaryColor = "";
+	protected $email = "";
 
   protected $idUpdated = false;
   protected $nameUpdated = false;
@@ -33,6 +34,7 @@ class Solution {
   protected $logoTypeUpdated = false;
   protected $mainColorUpdated = false;
   protected $secondaryColorUpdated = false;
+	protected $emailUpdated = false;
 
   protected $isDataRetrived = false;
 
@@ -102,6 +104,15 @@ class Solution {
     return $this->secondaryColorUpdated = true;
   }
 
+  public function getEmail() {
+    $this->retriveData();
+    return $this->email;
+  }
+  public function setEmail($input) {
+    $this->email = $input;
+    return $this->emailUpdated = true;
+  }
+
 
   # # # # # # # # misc methods # # # # # # # #
   public function delete() {
@@ -127,10 +138,12 @@ class Solution {
                               logo, 
                               logo_type, 
                               main_color, 
-                              secondary_color)
+                              secondary_color,
+                              email)
                 VALUES(
                               '',
                               '" . $db->dbIn($domain) . "',
+                              '',
                               '',
                               '',
                               '',
@@ -171,7 +184,8 @@ class Solution {
                      logo, 
                      logo_type, 
                      main_color, 
-                     secondary_color 
+                     secondary_color,
+                     email
                FROM  solution 
                WHERE id='" . $this->getId() . "';";
 
@@ -194,6 +208,7 @@ class Solution {
       $this->logoType = $db->dbOut($foo->logo_type);
       $this->mainColor = $db->dbOut($foo->main_color);
       $this->secondaryColor = $db->dbOut($foo->secondary_color);
+      $this->email = $db->dbOut($foo->email);
 
       $this->isDataRetrived = true;
     }
@@ -231,6 +246,11 @@ class Solution {
     if ($this->secondaryColorUpdated) {
       $query.=" ,secondary_color='" . $db->dbIn($this->secondaryColor) . "' ";
       $this->secondaryColorUpdated=false;
+    }
+
+    if ($this->emailUpdated) {
+      $query.=" ,email='" . $db->dbIn($this->email) . "' ";
+      $this->emailUpdated=false;
     }
 
     return $query;

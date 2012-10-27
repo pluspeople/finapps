@@ -50,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $waiting = OrderFactory::factoryByStep($solution->getId(), Order::AWAITING_BUSINESS);
 $amount = count($waiting);
-print "kaal" . $amount;
 if ($amount > 0) {
 	$slow->assign(array("WAITING_ORDERS" => $amount));
 	$slow->parse("Open_orders");

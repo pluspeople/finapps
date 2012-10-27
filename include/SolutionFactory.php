@@ -23,7 +23,8 @@ domain,
 logo,
 logo_type,
 main_color,
-secondary_color ";
+secondary_color,
+email ";
 
   # # # # # # # # misc methods # # # # # # # #
 

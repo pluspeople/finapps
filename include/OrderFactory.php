@@ -74,7 +74,6 @@ history ";
                WHERE solution_id='$solutionId'
                AND   process_step_id='$step' ";
 		
-			print $query;
 			if ($result = $db->query($query)) {
 				while($foo = $db->fetchObject($result)) {
 					$tempArray[] = new Order($foo->id, $foo);
