@@ -83,5 +83,29 @@ history ";
 		}
 		return $tempArray;
   }
+
+  static function factoryByMonth($solutionId, $time) {
+    $db = Database::instantiate(Database::TYPE_READ);
+		$solutionId = (int)$solutionId;
+		$time = (int)$time;
+		$tempArray = array();
+
+		if ($solutionId > 0 AND $time > 0) {
+			$query = OrderFactory::SELECTLIST . "
+							 FROM  orders
+               WHERE solution_id='$solutionId'
+               AND   YEAR(created_date) = '" . date("Y", $time) . "'
+               AND   MONTH(created_date) = '" . date("n", $time) . "' ";
+		
+			if ($result = $db->query($query)) {
+				while($foo = $db->fetchObject($result)) {
+					$tempArray[] = new Order($foo->id, $foo);
+				}
+				$db->freeResult($result);
+			}
+		}
+		return $tempArray;
+  }
+
 }
 ?>

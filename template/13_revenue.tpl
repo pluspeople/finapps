@@ -22,22 +22,29 @@
 
     <div id="maincontainer">
 			<div class="contentwrapper">
-			<form action="" method="post">
-				<!-- BEGIN DYNAMIC BLOCK: Open_orders -->
-				<input class="button" type="submit" value="{WAITING_ORDERS} order(s) awaiting you" name="openorders" /><br/><br/>
-				<!-- END DYNAMIC BLOCK: Open_orders -->
 				<center>
 					<img src="/1image/chart3.png" width="300" height="120"/><br/>
 					<br/>
+
+					<table>
+						<tr>
+							<td width="200"><strong>Month</strong></td>
+							<td width="100" align="right"><strong>Revenue</strong></td>
+						</tr>
+						<!-- BEGIN DYNAMIC BLOCK: Month -->
+						<tr>
+							<td>{MONTH_NAME}</td>
+							<td align="right">{MONTH_SALE} EURO</td>
+						</tr>
+						<!-- END DYNAMIC BLOCK: Month -->
+
+					</table>
 				</center>
 
-				<input class="button" type="submit" value="Revenue report" name="revenue" /><br/><br/>
-				<input class="button" type="submit" value="Orders management" name="orders" /><br/><br/>
-				<input class="button" type="submit" value="Products offered" name="products" /><br/><br/>
-				<input class="button" type="submit" value="Settings" name="settings" /><br/><br/>
 
+				<br/>
+				<input class="button" type="button" value="Back" name="cancel" onclick="document.location='11_dashboard.php'"/><br/>
 
-			</form>
 			</div>
     </div>
 
