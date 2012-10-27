@@ -24,7 +24,8 @@ logo,
 logo_type,
 main_color,
 secondary_color,
-email ";
+email,
+account ";
 
   # # # # # # # # misc methods # # # # # # # #
 

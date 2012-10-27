@@ -26,6 +26,7 @@ class Solution {
   protected $mainColor = "";
   protected $secondaryColor = "";
 	protected $email = "";
+	protected $account = "";
 
   protected $idUpdated = false;
   protected $nameUpdated = false;
@@ -35,6 +36,7 @@ class Solution {
   protected $mainColorUpdated = false;
   protected $secondaryColorUpdated = false;
 	protected $emailUpdated = false;
+	protected $accountUpdated = false;
 
   protected $isDataRetrived = false;
 
@@ -113,6 +115,15 @@ class Solution {
     return $this->emailUpdated = true;
   }
 
+  public function getAccount() {
+    $this->retriveData();
+    return $this->account;
+  }
+  public function setAccount($input) {
+    $this->account = $input;
+    return $this->accountUpdated = true;
+  }
+
 
   # # # # # # # # misc methods # # # # # # # #
   public function delete() {
@@ -139,10 +150,12 @@ class Solution {
                               logo_type, 
                               main_color, 
                               secondary_color,
-                              email)
+                              email,
+                              account)
                 VALUES(
                               '',
                               '" . $db->dbIn($domain) . "',
+                              '',
                               '',
                               '',
                               '',
@@ -185,7 +198,8 @@ class Solution {
                      logo_type, 
                      main_color, 
                      secondary_color,
-                     email
+                     email,
+                     account
                FROM  solution 
                WHERE id='" . $this->getId() . "';";
 
@@ -209,6 +223,7 @@ class Solution {
       $this->mainColor = $db->dbOut($foo->main_color);
       $this->secondaryColor = $db->dbOut($foo->secondary_color);
       $this->email = $db->dbOut($foo->email);
+      $this->account = $db->dbOut($foo->account);
 
       $this->isDataRetrived = true;
     }
@@ -251,6 +266,11 @@ class Solution {
     if ($this->emailUpdated) {
       $query.=" ,email='" . $db->dbIn($this->email) . "' ";
       $this->emailUpdated=false;
+    }
+
+    if ($this->accountUpdated) {
+      $query.=" ,account='" . $db->dbIn($this->account) . "' ";
+      $this->accountUpdated=false;
     }
 
     return $query;
