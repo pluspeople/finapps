@@ -8,6 +8,14 @@ $util = WebUtility::instantiate();
 
 /*
 $fin = new FinAppsApi();
+$data = $fin->deposit("408-8c50-939c6a4facd3", "508b5c57e4b0d122cede91b2", 100000);
+print_r($data);
+
+exit();
+*/
+
+/*
+$fin = new FinAppsApi();
 for ($i = 0; $i < 500; $i++) {
 	$fin->getOfficeList("c7f-b44e-c6ae088fe7d5");
 }

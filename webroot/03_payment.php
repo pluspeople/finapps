@@ -4,15 +4,38 @@ session_start();
 
 $slow = new SlowTemplate("/template", true);
 $slow->setTemplateFile('03_payment.tpl');
+$util = WebUtility::instantiate();
 
 $solution = SolutionFactory::factoryByDomain($_SERVER["SERVER_NAME"]);
 
+$error = "";
 
 /////////////////// POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if ($_POST["login"] != "" AND $_POST["passw"] != "" AND $_POST["card"]) {
+		$orderlines = (array)@$_SESSION["ORDERLINES"];
 
+		$orderValue = 0;
+		foreach ($orderlines AS $orderline) {
+			$orderValue += $orderline[0]->getTotalPrice() * $orderline[1];
+		}
 
+		/*
+		$fin = new FinAppsApi();
+		$data = $fin->login($solution->getAccount(), $_POST["passw"]);
+		$token = $data->token;
+		$data = $fin->getPayment($token, $_POST["card"], $orderValue/100);
+		$code = $data->data->code;
+		$data = $fin->doPayment($token, $code, $solution->getAccount());
 
+		if ($data->status == "ERROR") {
+			$error = $data->msg;
+		}
+		*/
+
+		session_unset();
+		$util->redirect('04_thank.php');
+	}
 }
 
 
@@ -20,34 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //////////////////////// MAIN DISPLAY
 $orderlines = (array)@$_SESSION["ORDERLINES"];
 
-// display full order of items
-$grandTotal = 0;
-foreach ($orderlines AS $orderline) {
-	$total = $orderline[0]->getTotalPrice() * $orderline[1];
-	$grandTotal += $total;
-	if ($orderline[2] > 0 AND $total == 0) {
-		$total = "&nbsp;";
-	}
-
-	$name = $orderline[0]->getName();
-
-	$slow->assign(array("ITEM_ID" => $orderline[0]->getId(),
-											"ITEM_NAME" => $name,
-											"ITEM_AMOUNT" => $orderline[1],
-											"ITEM_UNITPRICE" => $orderline[0]->getTotalPrice(),
-											"ITEM_TOTAL" => $total));
-			
-	$slow->parse("Item");
-}
-
-
-$slow->assign(array("CSS_FILE" => "css.php",
-										"GRAND_TOTAL" => $grandTotal,
-										"NAME_VALUE" => @$_SESSION["ORDER_NAME"],
-										"PHONE_VALUE" => @$_SESSION["ORDER_PHONE"],
-										"EMAIL_VALUE" => @$_SESSION["ORDER_EMAIL"],
-										"ADDRESS_VALUE" => @$_SESSION["ORDER_ADDRESS"],
-										"STREET_VALUE" => @$_SESSION["ORDER_STREET"]
+$slow->assign(array("CSS_FILE" => "css.php"
 										));
 
 

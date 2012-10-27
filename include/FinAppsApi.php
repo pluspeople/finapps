@@ -33,6 +33,31 @@ class FinAppsApi {
 		return json_decode($rawData);
 	}
 
+	public function createClient($login, $pw, $name) {
+		$data = array("username" => 'caketest',
+									"password" => 'cakecake',
+									"firstName" => 'Michael',
+									"lastName" => "Pedersen",
+									"address" => array("street" => "",
+																		 "number" => "",
+																		 "city" => "",
+																		 "postalCode" => "",
+																		 "country" => "")
+									);
+
+		$payload = json_encode($data);
+		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/access/client';
+		curl_setopt($this->curl, CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, false);
+		curl_setopt($this->curl, CURLOPT_POST, true);
+    curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $payload); 
+
+ 		$rawData = curl_exec($this->curl);
+		return json_decode($rawData);
+	}
+
 	public function login($login, $pw) {
 		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/access/login';
 
@@ -88,6 +113,79 @@ class FinAppsApi {
 	/*
 {"status":"OK","msg":"Ok","data":{"id":"508b3af2e4b04a375aa995b7","holder":{"username":"test@test.com","password":"stuff","firstName":"Uhasibu","lastName":"","address":null},"publicProfile":{"publicName":"Uhasibu","address":null,"location":[4.12,2.11]},"accounts":[],"offers":[]}}
 	*/
+
+
+	public function getPayment($token, $id, $amount) {
+		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/' . $token . '/operations/payment/' . $id . '/code?value=' . $amount;
+
+		curl_setopt($this->curl, CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, false);
+		curl_setopt($this->curl, CURLOPT_POST, false);
+
+ 		$rawData = curl_exec($this->curl);
+		return json_decode($rawData);
+	}
+
+	public function doPayment($token, $code, $account) {
+		$data = array("idAcount" => $account
+									);
+
+		$payload = json_encode($data);
+		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/' . $token . '/operations/payment/' . $code . '/exec';
+
+		curl_setopt($this->curl, CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, false);
+		curl_setopt($this->curl, CURLOPT_POST, true);
+    curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $payload); 
+
+ 		$rawData = curl_exec($this->curl);
+		return json_decode($rawData);
+	}
+
+	public function createCreditCard($token, $account) {
+		$data = array("linkAccount" => $account,
+									"mode" => 0,
+									"issuer" => 0
+									);
+
+		$payload = json_encode($data);
+		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/' . $token . '/operations/card/@me';
+
+		curl_setopt($this->curl, CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, false);
+		curl_setopt($this->curl, CURLOPT_POST, true);
+    curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $payload); 
+
+ 		$rawData = curl_exec($this->curl);
+		return json_decode($rawData);
+	}
+
+	public function deposit($token, $account, $amount) {
+		$data = array("accountNumber" => $account,
+									"value" => $amount,
+									"additionalData" => array("concept" => "",
+																						"payee" => "me")
+									);
+
+		$payload = json_encode($data);
+		print $payload;
+		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/' . $token . '/operations/account/deposit';
+
+		curl_setopt($this->curl, CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, false);
+		curl_setopt($this->curl, CURLOPT_POST, true);
+    curl_setopt($this->curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $payload); 
+
+ 		$rawData = curl_exec($this->curl);
+		return json_decode($rawData);
+	}
 
 }
 

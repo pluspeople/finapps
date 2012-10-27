@@ -23,17 +23,11 @@
     <div id="maincontainer">
 			<div class="contentwrapper">
 				<form method="post" action="">
-					<h2>FinAppApi client login:</h2>
-					<input type="text" name="login" value="caketest" style="width:297px;margin-bottom:5px;"/><br/>
-					<h2>FinAppApi client password:</h2>
-					<input type="password" name="passw" value="cakecake" style="width:297px;margin-bottom:5px;"/><br/>
-					<h2>FinAppApi Credit-card ID:</h2>
-					<input type="text" name="card" value="508b5d8ae4b04aa9eea55171" style="width:297px;margin-bottom:5px;"/><br/>
-
+					<h2>Thank you</h2>
+					Your order have been registered, and will be delivered as soon as possible.<br/>
+					
 					<br/>
-					<input class="button" type="submit" value="Confirm &gt;" name="confirm" /><br/>
-					<br/>
-					<input class="button" type="button" value="&lt; Go back" name="back" onclick="document.location='02_basket.php';" style="background-color:#CCC;"/>
+					<input class="button" type="button" value="Ok" name="back" onclick="document.location='01_front.php';" style="background-color:#CCC;"/>
 					
 				</form>
 			</div>
