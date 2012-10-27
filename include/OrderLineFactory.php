@@ -58,5 +58,25 @@ amount ";
 		}
 		return $tempArray;
   }
+
+  static function factoryByOrder($orderId) {
+    $db = Database::instantiate(Database::TYPE_READ);
+		$orderId = (int)$orderId;
+		$tempArray = array();
+
+		if ($orderId > 0) {
+			$query = OrderLineFactory::SELECTLIST . "
+							FROM  order_line
+              WHERE order_id = '" . $orderId . "' ";
+
+			if ($result = $db->query($query)) {
+				while($foo = $db->fetchObject($result)) {
+					$tempArray[] = new OrderLine($foo->id, $foo);
+				}
+				$db->freeResult($result);
+			}
+		}
+		return $tempArray;
+  }
 }
 ?>

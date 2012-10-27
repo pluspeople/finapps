@@ -17,7 +17,7 @@ $solution = $user->getSolution();
 /////////////////// POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST["openorders"])) {
-		$util->redirect("12_orders.php");
+		$util->redirect("15_orders.php");
 	}
 	
 	if (isset($_POST["revenue"])) {
