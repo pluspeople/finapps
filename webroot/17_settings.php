@@ -20,6 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$solution->setMainColor($_POST["bgcolor"]);
 	$solution->setSecondaryColor($_POST["fgcolor"]);
 
+	$newfile = $_FILES['newlogo'];
+	if (is_uploaded_file($newfile['tmp_name'])) {
+		$solution->setLogo(@file_get_contents($newfile['tmp_name']));
+		$solution->setLogoType($newfile['type']);
+	}
+
 	$solution->update();
 
 	$util->redirect('11_dashboard.php');

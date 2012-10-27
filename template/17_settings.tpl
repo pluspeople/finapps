@@ -5,6 +5,7 @@
 		<meta name="Keywords" content="{META_KEYWORDS}" />
 		<meta name="ROBOTS" content="NOODP" />
 		<meta name="description" content="{META_DESCRIPTION}" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -22,10 +23,10 @@
 
     <div id="maincontainer">
 			<div class="contentwrapper">
-			<form action="" method="post">
+			<form action="" method="post" enctype="multipart/form-data">
 				<h2>Logo:</h2>
 				<img src="{LOGO}"/><br/>
-				Replace: <input type="file" name="logo"/> 
+				Replace: <input type="file" name="newlogo"/> 
 
 				<h2>Business name:</h2>
 				<input type="text" name="name" value="{NAME}"/ style="width:96%;margin-bottom:5px;" /><br/>

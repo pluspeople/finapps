@@ -5,6 +5,7 @@
 		<meta name="Keywords" content="{META_KEYWORDS}" />
 		<meta name="ROBOTS" content="NOODP" />
 		<meta name="description" content="{META_DESCRIPTION}" />
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
