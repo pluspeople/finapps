@@ -6,11 +6,11 @@ $slow = new SlowTemplate("/template", true);
 $slow->setTemplateFile('30_signup.tpl');
 $util = WebUtility::instantiate();
 
+
 /*
 $fin = new FinAppsApi();
-$data = $fin->deposit("408-8c50-939c6a4facd3", "508b5c57e4b0d122cede91b2", 100000);
+$data = $fin->deposit("408-8c50-939c6a4facd3", "2100 1111 37 0000000750", 10000000);
 print_r($data);
-
 exit();
 */
 
@@ -67,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 			$mail = "Welcome to the Dreamcakes solution - developed for FinAppsParty 2012\n\n";
-			$mail .= "You can access your new mobile solution visit: http://" . $domain . "\n\n";
-			$mail .= "To access the business dashboard login on http://www.dreamcakes.co.ke\n";
+			$mail .= "You can access your new mobile solution visit: http://" . $domain . "/index.php\n\n";
+			$mail .= "To access the business dashboard login on http://www.dreamcakes.co.ke/index.php\n";
 			$mail .= "Your login is: " . $toEmail . "\n";
 			$mail .= "Your password is: " . $pw . "\n\n";
 			$mail .= "Any support questions can be sent to support@uhasibu.co.ke\n\n";

@@ -15,10 +15,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($_POST["login"] != "" AND $_POST["passw"] != "" AND $_POST["card"]) {
 		$orderlines = (array)@$_SESSION["ORDERLINES"];
 
+		$order = Order::createNew($solution->getId());
+		$order->setProcessStepId(Order::AWAITING_BUSINESS);
+		$order->setName($_SESSION["ORDER_NAME"]);
+		$order->setPhone($_SESSION["ORDER_PHONE"]);
+		$order->setEmail($_SESSION["ORDER_EMAIL"]);
+		$order->setAddress($_SESSION["ORDER_ADDRESS"]);
+
+		$order->update();
+
 		$orderValue = 0;
 		foreach ($orderlines AS $orderline) {
+			$line = OrderLine::createNew($order->getId());
+			$line->setProductId($orderline[0]->getId());
+			$line->setName($orderline[0]->getName());
+			$line->setDescription($orderline[0]->getDescription());
+			$line->setPrice($orderline[0]->getTotalPrice());
+			$line->setCost($orderline[0]->getCost());
+			$line->setAmount($orderline[1]);
+
+			$line->update();
+
 			$orderValue += $orderline[0]->getTotalPrice() * $orderline[1];
 		}
+
+		$order->setTotalPrice($orderValue);
+		$order->update();
+
 
 		/*
 		$fin = new FinAppsApi();
@@ -32,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$error = $data->msg;
 		}
 		*/
+
+		
 
 		session_unset();
 		$util->redirect('04_thank.php');

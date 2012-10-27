@@ -23,7 +23,8 @@ product_id,
 name,
 description,
 price,
-cost ";
+cost,
+amount ";
 
   # # # # # # # # misc methods # # # # # # # #
 

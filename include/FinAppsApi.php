@@ -173,7 +173,6 @@ class FinAppsApi {
 									);
 
 		$payload = json_encode($data);
-		print $payload;
 		$url = FinAppsApi::BASE_URL . FinAppsApi::KEY . '/' . $token . '/operations/account/deposit';
 
 		curl_setopt($this->curl, CURLOPT_URL, $url);

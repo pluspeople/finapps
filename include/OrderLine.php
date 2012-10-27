@@ -25,6 +25,7 @@ class OrderLine {
   protected $description = "";
   protected $price = "";
   protected $cost = "";
+	protected $amount = 0;
 
   protected $idUpdated = false;
   protected $orderIdUpdated = false;
@@ -33,6 +34,7 @@ class OrderLine {
   protected $descriptionUpdated = false;
   protected $priceUpdated = false;
   protected $costUpdated = false;
+	protected $amountUpdated = false;
 
   protected $isDataRetrived = false;
 
@@ -102,6 +104,14 @@ class OrderLine {
     return $this->costUpdated = true;
   }
 
+  public function getAmount() {
+    $this->retriveData();
+    return $this->amount;
+  }
+  public function setAmount($input) {
+    $this->amount = $input;
+    return $this->amountUpdated = true;
+  }
 
   # # # # # # # # misc methods # # # # # # # #
   public function delete() {
@@ -116,6 +126,38 @@ class OrderLine {
       return false;
     }
   }
+
+	static public function createNew($orderId) {
+		$orderId = (int)$orderId;
+
+		if ($orderId > 0) {
+      $db = Database::instantiate(Database::TYPE_WRITE);
+			
+			$query = "INSERT INTO   order_line(
+                              order_id, 
+                              product_id, 
+                              name, 
+                              description, 
+                              price, 
+                              cost,
+                              amount)
+                VALUES(
+                              '$orderId',
+                              NULL,
+                              '',
+                              '',
+                              0,
+                              0,
+                              0);";
+
+			if ($db->query($query)) {
+				$obj = new OrderLine($db->insertId());
+				$obj->getOrderId(); // dummy init
+				return $obj;
+			}
+		}
+		return null;
+	}
 
   public function update() {
     if ($this->getId() > 0) {
@@ -143,7 +185,8 @@ class OrderLine {
                      name, 
                      description, 
                      price, 
-                     cost 
+                     cost,
+                     amount 
                FROM  order_line 
                WHERE id='" . $this->getId() . "';";
 
@@ -166,6 +209,7 @@ class OrderLine {
       $this->description = $db->dbOut($foo->description);
       $this->price = $foo->price;
       $this->cost = $foo->cost;
+			$this->amount = $foo->amount;
 
       $this->isDataRetrived = true;
     }
@@ -203,6 +247,11 @@ class OrderLine {
     if ($this->costUpdated) {
       $query.=" ,cost='$this->cost' ";
       $this->costUpdated = false;
+    }
+
+    if ($this->amountUpdated) {
+      $query.=" ,amount='$this->amount' ";
+      $this->amountUpdated = false;
     }
 
     return $query;

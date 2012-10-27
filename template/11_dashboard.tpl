@@ -32,7 +32,6 @@
 				</center>
 
 				<input class="button" type="submit" value="Revenue report" name="revenue" /><br/><br/>
-				<input class="button" type="submit" value="Profit report" name="profit" /><br/><br/>
 				<input class="button" type="submit" value="Orders management" name="orders" /><br/><br/>
 				<input class="button" type="submit" value="Products offered" name="products" /><br/><br/>
 				<input class="button" type="submit" value="Settings" name="settings" /><br/><br/>
