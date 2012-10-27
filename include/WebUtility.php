@@ -269,5 +269,20 @@ class WebUtility {
 		return $isValid;
 	}
 
+	function numberInput($input) {
+		$amount = 0;
+		if (preg_match("/^[0-9,]+$/", $input)) {
+			$amount = 100 * (int)str_replace(',', '', $input);
+		} elseif (preg_match("/^[0-9,]+\.[0-9]$/", $input)) {
+			$amount = 10 * (int)str_replace(array('.', ','), '', $input);
+		} elseif (preg_match("/^[0-9,]*\.[0-9][0-9]$/", $input)) {
+			$amount = (int)str_replace(array('.', ','), '', $input);
+		} else {
+			$amount = (int)$input;
+		}
+		return $amount;
+	}
+
+
 }
 ?>

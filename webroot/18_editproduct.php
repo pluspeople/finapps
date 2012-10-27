@@ -67,13 +67,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST["OK"])) {
 		$product->setName($_POST["name"]);
 		$product->setDescription($_POST["description"]);
-		$product->setPrice($_POST["price"]);
-		$product->setCost($_POST["cost"]);
+		$product->setPrice($util->numberInput($_POST["price"]));
+		$product->setCost($util->numberInput($_POST["cost"]));
 		$product->setVatRate($_POST["vat"]);
 
 		$product->update();
 		
-		$util->redirect("16_products.php");
+		//		$util->redirect("16_products.php");
 	}
 }
 
@@ -84,8 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $slow->assign(array("NAME" => $product->getName(),
 										"DESCRIPTION" => $product->getDescription(),
-										"PRICE" => $product->getPrice(),
-										"COST" => $product->getCost(),
+										"PRICE" => number_format($product->getPrice()/100, 2, '.', ','),
+										"COST" => number_format($product->getCost()/100, 2, '.', ','),
 										"VAT_RATE" => $product->getVatRate()
 										));
 
